@@ -27,7 +27,7 @@ angular.module('angularPayments')
     var ret = {};
 
     for(i in possibleKeys){
-        if(data.hasOwnProperty(possibleKeys[i])){
+        if(data.hasOwnProperty(possibleKeys[i])){ 
             ret[camelToSnake(possibleKeys[i])] = angular.copy(data[possibleKeys[i]]);
         }
     }
@@ -64,7 +64,7 @@ angular.module('angularPayments')
         if(form.hasClass('ng-valid')) {
           
 
-          $window.Stripe.createToken(_getDataToSend(scope), function() {
+          $window.Stripe.createToken(_getDataToSend(scope.payment), function() {
             var args = arguments;
             scope.$apply(function() {
               scope[attr.stripeForm].apply(scope, args);
